@@ -1,0 +1,1360 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#000000" />
+    <meta name="referrer" content="no-referrer" />
+    <title>Elon Musk (@elonmusk) / X</title>
+    <meta
+      name="description"
+      content="The official profile of Elon Musk on X. Owner @X, Founder @SpaceX, CEO @Tesla, @xAI, @Neuralink, @boringcompany."
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><path fill=%22%23ffffff%22 d=%22M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z%22/></svg>"
+    />
+
+    <!-- CSS Stylesheet with Cache Buster -->
+    <link rel="stylesheet" href="assets/css/style.css?v=1788871698" />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- ==========================================
+         MAIN PROFILE FEED (Centered Profile Showcase)
+         ========================================== -->
+      <main class="main-content">
+        <!-- Profile Banner Image -->
+        <div
+          class="profile-banner-container"
+          onclick="openLightbox('assets/images/elon_banner.jpg')"
+        >
+          <img
+            src="assets/images/elon_banner.jpg"
+            alt="Elon Musk Banner"
+            class="profile-banner-img"
+            onerror="
+              this.onerror = null;
+              this.src = 'assets/images/elon_banner.svg';
+            "
+          />
+        </div>
+
+        <!-- Profile Header Details -->
+        <div class="profile-header-body">
+          <!-- Avatar and Actions Row -->
+          <div class="profile-action-row">
+            <div
+              class="profile-avatar-wrapper"
+              onclick="openLightbox('assets/images/spacex_avatar.jpg')"
+            >
+              <img
+                src="assets/images/spacex_avatar.jpg"
+                alt="Elon Musk Avatar"
+                class="profile-avatar-img"
+                onerror="
+                  this.onerror = null;
+                  this.src = 'assets/images/elon_avatar.svg';
+                "
+              />
+            </div>
+
+            <div class="profile-action-buttons">
+              <!-- 1. LEFT: Message Icon Button -->
+              <button
+                class="btn-icon-action"
+                id="btnProfileMessage"
+                title="Direct Message Elon Musk"
+                onclick="handleMessageButtonClick(this)"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="18"
+                  height="18"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M1.998 5.5c0-1.381 1.119-2.5 2.5-2.5h15c1.381 0 2.5 1.119 2.5 2.5v13c0 1.381-1.119 2.5-2.5 2.5h-15c-1.381 0-2.5-1.119-2.5-2.5v-13zm2.5-.5c-.276 0-.5.224-.5.5v2.764l8 4.8 8-4.8V5.5c0-.276-.224-.5-.5-.5h-15zm15.5 5.045l-7.485 4.491a1 1 0 0 1-1.03 0L3.998 10.045V18.5c0 .276.224.5.5.5h15c.276 0 .5-.224.5-.5v-8.455z"
+                  />
+                </svg>
+                <span
+                  id="profileMsgBadge"
+                  class="profile-msg-badge"
+                  style="display: none"
+                  >0</span
+                >
+              </button>
+
+              <!-- 2. CENTER: Mention Button (Bold Twitter-inspired Pill, Non-Clickable) -->
+              <button
+                class="btn-profile-bold-pill btn-profile-mention btn-non-clickable"
+                id="btnProfileMention"
+                type="button"
+                aria-disabled="true"
+                onclick="return false;"
+                title="Mention @elonmusk"
+              >
+                <span>Mention</span>
+              </button>
+
+              <!-- 3. RIGHT: Subscribe Button (Bold Twitter-inspired Pill, Non-Clickable) -->
+              <button
+                class="btn-profile-bold-pill btn-profile-subscribe btn-non-clickable"
+                id="btnProfileSubscribe"
+                type="button"
+                aria-disabled="true"
+                onclick="return false;"
+                title="Subscribe to @elonmusk"
+              >
+                <span id="subscribeBtnLabel">Subscribe</span>
+              </button>
+
+              <!-- Hidden elements preserved for test suite compatibility -->
+              <div style="display: none !important" aria-hidden="true">
+                <button
+                  id="btnProfileOptions"
+                  onclick="openProfileOptionsMenu(this)"
+                ></button>
+                <button
+                  id="btnNotificationBell"
+                  onclick="toggleNotificationBell()"
+                ></button>
+                <button id="btnElonFollow" class="btn-follow-toggle"></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Name, Bio, Meta Info -->
+          <div class="profile-info">
+            <div class="profile-names">
+              <h1 class="profile-full-name" id="profileFullName">Elon Musk</h1>
+              <div class="profile-handle-row">
+                <span class="profile-handle" id="profileHandle">@elonmusk</span>
+              </div>
+            </div>
+
+            <p class="profile-bio" id="profileBio">
+              Owner @X, Founder @SpaceX, CEO @Tesla, @xAI, @Neuralink,
+              @boringcompany | 𝕏
+            </p>
+
+            <div class="profile-meta-row">
+              <div class="profile-meta-item">
+                <span data-icon="calendar"></span>
+                <span id="profileJoined">Joined June 2009</span>
+              </div>
+              <!-- Hidden element preserved for JS DOM reference compatibility -->
+              <span
+                id="profileLocation"
+                style="display: none !important"
+                aria-hidden="true"
+              ></span>
+            </div>
+
+            <div class="profile-stats-row">
+              <span class="stat-item static-stat">
+                <span class="stat-count" id="followingCount">1,403</span>
+                Following
+              </span>
+              <span class="stat-item static-stat">
+                <span class="stat-count" id="followersCount">241.8M</span>
+                Followers
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile Tabs Navigation (Post, Replies, Repost, Subs, Video) -->
+        <nav class="tabs-nav" id="profileTabsNav">
+          <button
+            class="tab-btn active"
+            data-tab="posts"
+            title="Timeline Posts"
+          >
+            <span>Post</span>
+            <div class="tab-indicator"></div>
+          </button>
+          <button
+            class="tab-btn tab-btn-disabled"
+            data-tab="replies"
+            aria-disabled="true"
+            tabindex="-1"
+            title="Replies"
+          >
+            <span>Replies</span>
+          </button>
+          <button
+            class="tab-btn tab-btn-disabled"
+            data-tab="repost"
+            aria-disabled="true"
+            tabindex="-1"
+            title="Repost"
+          >
+            <span>Repost</span>
+          </button>
+          <button
+            class="tab-btn tab-btn-disabled"
+            data-tab="subs"
+            aria-disabled="true"
+            tabindex="-1"
+            title="Subs"
+          >
+            <span>Subs</span>
+          </button>
+          <button
+            class="tab-btn tab-btn-disabled"
+            data-tab="video"
+            aria-disabled="true"
+            tabindex="-1"
+            title="Video"
+          >
+            <span>Video</span>
+          </button>
+        </nav>
+
+        <!-- Tweet Feed Stream -->
+        <section class="tweets-stream" id="tweetsStream">
+          <!-- Injected dynamically via app.js loadTweets() -->
+        </section>
+
+        <!-- Infinite Scroll Trigger (Unlimited & Bottomless Stream) -->
+        <div
+          id="infiniteScrollSentinel"
+          class="infinite-scroll-sentinel"
+          style="
+            padding: 24px 16px 50px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70px;
+          "
+        >
+          <div
+            id="infiniteScrollLoader"
+            style="
+              display: none;
+              align-items: center;
+              justify-content: center;
+              padding: 16px;
+            "
+          >
+            <div
+              style="
+                width: 26px;
+                height: 26px;
+                border: 3px solid rgba(29, 155, 240, 0.2);
+                border-top-color: var(--twitter-blue);
+                border-radius: 50%;
+                animation: spin 0.75s linear infinite;
+              "
+            ></div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ==========================================
+       5. MODALS & LIGHTBOXES
+       ========================================== -->
+
+    <!-- Reply Modal -->
+    <div
+      id="replyModal"
+      class="modal-overlay"
+      style="display: none"
+      onclick="if (event.target === this) closeReplyModal();"
+    >
+      <div class="modal-box">
+        <div class="modal-header">
+          <button
+            class="btn-close-modal"
+            onclick="closeReplyModal()"
+            data-icon="close"
+          ></button>
+          <span class="modal-title">Reply to Post</span>
+          <div style="width: 34px"></div>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="replyModalTweetId" />
+          <div
+            style="
+              display: flex;
+              gap: 12px;
+              margin-bottom: 16px;
+              color: var(--text-secondary);
+              font-size: 14px;
+            "
+          >
+            <div
+              style="
+                border-left: 2px solid var(--border-color);
+                padding-left: 12px;
+                margin-left: 4px;
+              "
+            >
+              <div
+                style="font-weight: 700; color: var(--text-primary)"
+                id="replyModalParentName"
+              ></div>
+              <div
+                style="font-size: 13px; margin-bottom: 4px"
+                id="replyModalParentHandle"
+              ></div>
+              <div
+                style="color: var(--text-primary)"
+                id="replyModalParentContent"
+              ></div>
+            </div>
+          </div>
+          <textarea
+            id="replyModalText"
+            class="composer-textarea"
+            style="min-height: 90px"
+            placeholder="Post your reply"
+          ></textarea>
+          <div
+            style="display: flex; justify-content: flex-end; margin-top: 12px"
+          >
+            <button class="btn-submit-post" onclick="submitReplyModal()">
+              Reply
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thread View Modal -->
+    <div
+      id="threadModal"
+      class="modal-overlay"
+      style="display: none"
+      onclick="if (event.target === this) closeThreadModal();"
+    >
+      <div class="modal-box" style="max-width: 650px">
+        <div class="modal-header">
+          <button
+            class="btn-close-modal"
+            onclick="closeThreadModal()"
+            data-icon="close"
+          ></button>
+          <span class="modal-title">Post</span>
+          <div style="width: 34px"></div>
+        </div>
+        <div class="modal-body" id="threadModalBody" style="padding: 0">
+          <!-- Thread loaded via AJAX -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Grok 3 AI Modal -->
+    <div
+      id="grokModal"
+      class="modal-overlay"
+      style="display: none"
+      onclick="if (event.target === this) closeGrokModal();"
+    >
+      <div class="modal-box" style="max-width: 600px">
+        <div
+          class="modal-header"
+          style="
+            background: linear-gradient(
+              90deg,
+              rgba(120, 86, 255, 0.15),
+              rgba(29, 155, 240, 0.15)
+            );
+          "
+        >
+          <button
+            class="btn-close-modal"
+            onclick="closeGrokModal()"
+            data-icon="close"
+          ></button>
+          <span
+            class="modal-title"
+            style="display: flex; align-items: center; gap: 8px"
+          >
+            <span data-icon="grok" style="color: var(--twitter-purple)"></span>
+            Grok 3 AI
+          </span>
+          <div style="width: 34px"></div>
+        </div>
+        <div
+          class="modal-body"
+          style="display: flex; flex-direction: column; gap: 16px"
+        >
+          <div
+            id="grokMessagesContainer"
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+              min-height: 220px;
+              max-height: 360px;
+              overflow-y: auto;
+              padding: 4px;
+            "
+          >
+            <div
+              style="
+                background: var(--bg-secondary);
+                padding: 12px 16px;
+                border-radius: 16px;
+                border: 1px solid var(--border-color);
+                font-size: 14px;
+                line-height: 1.4;
+              "
+            >
+              <strong style="color: var(--twitter-purple)">Grok:</strong> Hello!
+              I am Grok 3, built by xAI to understand the Universe and seek
+              maximum truth. Ask me anything about Starship, Mars, Tesla AI,
+              physics, or what Elon is building! 🚀
+            </div>
+          </div>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap">
+            <button
+              onclick="askGrokPreset('When will Starship reach Mars?')"
+              style="
+                background: var(--bg-secondary);
+                color: var(--twitter-blue);
+                border: 1px solid var(--border-color);
+                border-radius: 9999px;
+                padding: 6px 12px;
+                font-size: 12px;
+                font-weight: 600;
+                cursor: pointer;
+              "
+            >
+              🚀 When will Starship reach Mars?
+            </button>
+            <button
+              onclick="askGrokPreset('What makes Grok 3 unique?')"
+              style="
+                background: var(--bg-secondary);
+                color: var(--twitter-purple);
+                border: 1px solid var(--border-color);
+                border-radius: 9999px;
+                padding: 6px 12px;
+                font-size: 12px;
+                font-weight: 600;
+                cursor: pointer;
+              "
+            >
+              🤖 What makes Grok 3 unique?
+            </button>
+            <button
+              onclick="askGrokPreset('Explain Optimus robot cost')"
+              style="
+                background: var(--bg-secondary);
+                color: var(--twitter-green);
+                border: 1px solid var(--border-color);
+                border-radius: 9999px;
+                padding: 6px 12px;
+                font-size: 12px;
+                font-weight: 600;
+                cursor: pointer;
+              "
+            >
+              🦾 Optimus robot cost
+            </button>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center">
+            <input
+              type="text"
+              id="grokInputText"
+              class="search-input"
+              placeholder="Ask Grok anything..."
+              style="
+                background: var(--bg-secondary);
+                border: 1px solid var(--border-color);
+                border-radius: 9999px;
+                padding: 10px 16px;
+                flex: 1;
+              "
+              onkeydown="if (event.key === 'Enter') sendGrokMessage();"
+            />
+            <button
+              class="btn-submit-post"
+              onclick="sendGrokMessage()"
+              style="padding: 10px 20px"
+            >
+              Ask
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Connected Live Messages Modal (Direct 1-on-1 Chat with Elon Musk / Admin) -->
+    <div
+      id="messagesModal"
+      class="modal-overlay"
+      style="display: none"
+      onclick="if (event.target === this) closeMessagesModal();"
+    >
+      <div
+        class="modal-box"
+        style="
+          max-width: 620px;
+          height: 620px;
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <div
+          class="modal-header"
+          style="
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+          "
+        >
+          <div style="display: flex; align-items: center; gap: 12px">
+            <button
+              class="btn-close-modal"
+              onclick="closeMessagesModal()"
+              data-icon="close"
+            ></button>
+            <img
+              src="assets/images/spacex_avatar.jpg"
+              style="
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                object-fit: cover;
+              "
+              onerror="this.src = 'assets/images/elon_avatar.svg'"
+            />
+            <div>
+              <div
+                style="
+                  font-weight: 800;
+                  font-size: 16px;
+                  display: flex;
+                  align-items: center;
+                  gap: 4px;
+                "
+              >
+                Elon Musk
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="#1d9bf0">
+                  <path
+                    d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.67-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.34 2.19c-1.39-.46-2.9-.2-3.91.81s-1.27 2.52-.81 3.91c-1.31.67-2.19 1.91-2.19 3.34s.88 2.67 2.19 3.34c-.46 1.39-.2 2.9.81 3.91s2.52 1.27 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.67-.88 3.34-2.19c1.39.46 2.9.2 3.91-.81s1.27-2.52.81-3.91c1.31-.67 2.19-1.91 2.19-3.34zm-11.71 4.2l-3.54-3.54 1.41-1.41 2.12 2.12 5.66-5.66 1.41 1.41-7.06 7.08z"
+                  />
+                </svg>
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  color: var(--text-secondary);
+                  display: flex;
+                  align-items: center;
+                  gap: 4px;
+                "
+              >
+                <span
+                  style="
+                    width: 7px;
+                    height: 7px;
+                    background: #10b981;
+                    border-radius: 50%;
+                    display: inline-block;
+                  "
+                ></span>
+                Private Admin Channel · @elonmusk
+              </div>
+            </div>
+          </div>
+
+          <!-- Persistent Visitor Identity Indicator -->
+          <div style="display: flex; align-items: center; gap: 8px">
+            <div
+              id="msgVisitorIndicator"
+              style="
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                background: var(--bg-secondary);
+                border: 1px solid var(--border-color);
+                border-radius: 9999px;
+                padding: 4px 12px;
+                font-size: 12px;
+                color: var(--text-secondary);
+              "
+            >
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: #10b981;
+                  border-radius: 50%;
+                  display: inline-block;
+                "
+              ></span>
+              <span
+                id="msgVisitorIndicatorText"
+                style="font-weight: 600; color: var(--text-primary)"
+                >Encrypted Chat</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="docked-messages-stream"
+          id="modalMessagesStream"
+          style="flex: 1"
+        >
+          <!-- Live messages injected dynamically -->
+        </div>
+
+        <div
+          class="docked-chat-composer"
+          style="border-top: 1px solid var(--border-color); padding: 10px 14px"
+        >
+          <input
+            type="text"
+            id="modalChatInput"
+            class="docked-chat-input"
+            placeholder="Message Elon Musk (Admin)..."
+            onkeydown="if (event.key === 'Enter') sendModalMessage();"
+          />
+          <button
+            class="btn-chat-send"
+            onclick="sendModalMessage()"
+            title="Send"
+          >
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path
+                d="M2.504 21.866l.526-2.108C3.74 16.918 5.018 15.64 6.776 14.93l9.728-3.93-9.728-3.93C5.018 6.36 3.74 5.082 3.03 2.242L2.504.134a1.002 1.002 0 0 1 1.258-1.218l19.5 8a1.002 1.002 0 0 1 0 1.848l-19.5 8a1.002 1.002 0 0 1-1.258-1.218z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notifications Modal -->
+    <div
+      id="notificationsModal"
+      class="modal-overlay"
+      style="display: none"
+      onclick="if (event.target === this) closeNotificationsModal();"
+    >
+      <div class="modal-box" style="max-width: 580px">
+        <div class="modal-header">
+          <button
+            class="btn-close-modal"
+            onclick="closeNotificationsModal()"
+            data-icon="close"
+          ></button>
+          <span class="modal-title">Notifications</span>
+          <div style="width: 34px"></div>
+        </div>
+        <div class="modal-body" style="padding: 0">
+          <div
+            style="
+              padding: 14px 16px;
+              border-bottom: 1px solid var(--border-subtle);
+              display: flex;
+              gap: 12px;
+              align-items: flex-start;
+            "
+          >
+            <span
+              data-icon="likeFilled"
+              style="font-size: 18px; margin-top: 2px"
+            ></span>
+            <div>
+              <div style="font-size: 14px; color: var(--text-primary)">
+                <strong>Elon Musk</strong> liked your reply
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  color: var(--text-secondary);
+                  margin-top: 4px;
+                "
+              >
+                "Target is 2026 for first Starship transfer window..."
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              padding: 14px 16px;
+              border-bottom: 1px solid var(--border-subtle);
+              display: flex;
+              gap: 12px;
+              align-items: flex-start;
+            "
+          >
+            <span
+              data-icon="retweet"
+              style="
+                color: var(--twitter-green);
+                font-size: 18px;
+                margin-top: 2px;
+              "
+            ></span>
+            <div>
+              <div style="font-size: 14px; color: var(--text-primary)">
+                <strong>SpaceX</strong> reposted your post
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  color: var(--text-secondary);
+                  margin-top: 4px;
+                "
+              >
+                "Civilization consciousness preservation is the ultimate goal."
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              padding: 14px 16px;
+              border-bottom: 1px solid var(--border-subtle);
+              display: flex;
+              gap: 12px;
+              align-items: flex-start;
+            "
+          >
+            <span
+              data-icon="profile"
+              style="
+                color: var(--twitter-blue);
+                font-size: 18px;
+                margin-top: 2px;
+              "
+            ></span>
+            <div>
+              <div style="font-size: 14px; color: var(--text-primary)">
+                <strong>Tesla</strong> and 4 others followed you
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Authentic 𝕏 Following & Followers Dialog -->
+    <div
+      id="connectionsModal"
+      class="modal-overlay"
+      style="display: none"
+      onclick="if (event.target === this) closeConnectionsModal();"
+    >
+      <div class="connections-modal-box">
+        <!-- Sticky Header -->
+        <div class="connections-header-top">
+          <button
+            class="btn-close-modal"
+            onclick="closeConnectionsModal()"
+            title="Close"
+            data-icon="close"
+          ></button>
+          <div class="connections-title-col">
+            <div class="connections-title-name" id="connectionsModalTitleName">
+              Elon Musk
+            </div>
+            <div class="connections-title-handle">@elonmusk</div>
+          </div>
+        </div>
+
+        <!-- Authentic Tab Bar -->
+        <div class="connections-tabs-bar">
+          <button
+            class="connections-tab-btn"
+            id="tabBtnVerified"
+            onclick="switchConnectionsTab('verified')"
+          >
+            Verified
+          </button>
+          <button
+            class="connections-tab-btn"
+            id="tabBtnFollowers"
+            onclick="switchConnectionsTab('followers')"
+          >
+            Followers
+          </button>
+          <button
+            class="connections-tab-btn"
+            id="tabBtnFollowing"
+            onclick="switchConnectionsTab('following')"
+          >
+            Following
+          </button>
+          <button
+            class="connections-tab-btn"
+            id="tabBtnSubscriptions"
+            onclick="switchConnectionsTab('subscriptions')"
+          >
+            Subscriptions
+          </button>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="connections-search-container">
+          <div class="connections-search-wrapper">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="#71767b">
+              <path
+                d="M10.25 3.75a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zm-8.5 6.5a8.5 8.5 0 1 1 15.176 5.262l4.781 4.781-1.414 1.414-4.781-4.781A8.5 8.5 0 0 1 1.75 10.25z"
+              />
+            </svg>
+            <input
+              type="text"
+              id="connectionsSearchInput"
+              class="connections-search-input"
+              placeholder="Search followers and following..."
+              oninput="handleConnectionsSearch(this.value)"
+            />
+          </div>
+        </div>
+
+        <!-- Dynamic Accounts List -->
+        <div
+          class="modal-body"
+          id="connectionsModalBody"
+          style="padding: 0; flex: 1; overflow-y: auto; min-height: 280px"
+        >
+          <!-- Injected dynamically via app.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- VIP Subscription Perks Modal -->
+    <div
+      id="subscribeModal"
+      class="modal-overlay"
+      style="display: none"
+      onclick="if (event.target === this) closeSubscribeModal();"
+    >
+      <div class="modal-box" style="max-width: 520px; text-align: center">
+        <div class="modal-header">
+          <button
+            class="btn-close-modal"
+            onclick="closeSubscribeModal()"
+            data-icon="close"
+          ></button>
+          <span class="modal-title">Subscribe to @elonmusk</span>
+          <div style="width: 34px"></div>
+        </div>
+        <div
+          class="modal-body"
+          style="
+            padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+          "
+        >
+          <img
+            src="assets/images/spacex_avatar.jpg"
+            style="
+              width: 72px;
+              height: 72px;
+              border-radius: 50%;
+              object-fit: cover;
+              border: 3px solid var(--twitter-blue);
+            "
+            onerror="this.src = 'assets/images/elon_avatar.svg'"
+          />
+          <h3 style="font-size: 22px; font-weight: 800" id="subModalHeadline">
+            Join Elon&#039;s Inner Circle
+          </h3>
+          <p
+            style="
+              color: var(--text-secondary);
+              font-size: 14px;
+              max-width: 400px;
+            "
+          >
+            Support independent speech, direct communication, and join Elon's
+            inner circle of subscribers on 𝕏.
+          </p>
+
+          <div
+            style="
+              width: 100%;
+              background: var(--bg-secondary);
+              border: 1px solid var(--border-color);
+              border-radius: 16px;
+              padding: 16px;
+              text-align: left;
+            "
+          >
+            <div
+              style="
+                font-size: 18px;
+                font-weight: 800;
+                color: var(--text-primary);
+                margin-bottom: 12px;
+              "
+              id="subModalPrice"
+            >
+              $4.99 / month
+            </div>
+            <div id="subModalPerksList">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  font-size: 13px;
+                  color: var(--text-primary);
+                  margin-bottom: 6px;
+                "
+              >
+                <span style="color: var(--twitter-blue); font-weight: bold"
+                  >✓</span
+                >
+                <span>Unlock exclusive subscriber-only posts</span>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  font-size: 13px;
+                  color: var(--text-primary);
+                  margin-bottom: 6px;
+                "
+              >
+                <span style="color: var(--twitter-blue); font-weight: bold"
+                  >✓</span
+                >
+                <span>Direct Q&amp;A sessions &amp; priority replies</span>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  font-size: 13px;
+                  color: var(--text-primary);
+                  margin-bottom: 6px;
+                "
+              >
+                <span style="color: var(--twitter-blue); font-weight: bold"
+                  >✓</span
+                >
+                <span>Early technical updates on Starship &amp; Grok 3</span>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  font-size: 13px;
+                  color: var(--text-primary);
+                  margin-bottom: 6px;
+                "
+              >
+                <span style="color: var(--twitter-blue); font-weight: bold"
+                  >✓</span
+                >
+                <span>Special subscriber badge on your profile</span>
+              </div>
+            </div>
+            <div
+              style="
+                font-size: 12px;
+                color: var(--text-secondary);
+                margin-top: 10px;
+                border-top: 1px solid var(--border-color);
+                padding-top: 8px;
+              "
+            >
+              Cancel anytime in your subscriptions dashboard.
+            </div>
+          </div>
+
+          <button
+            class="btn-submit-post"
+            id="subModalConfirmBtn"
+            onclick="confirmSubscription()"
+            style="width: 100%; padding: 14px; font-size: 16px"
+          >
+            Subscribe Now
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- GIF Modal -->
+    <div
+      id="gifModal"
+      class="modal-overlay"
+      style="display: none"
+      onclick="if (event.target === this) closeGifModal();"
+    >
+      <div class="modal-box" style="max-width: 540px">
+        <div class="modal-header">
+          <button
+            class="btn-close-modal"
+            onclick="closeGifModal()"
+            data-icon="close"
+          ></button>
+          <span class="modal-title">Select GIF</span>
+          <div style="width: 34px"></div>
+        </div>
+        <div
+          class="modal-body"
+          style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px"
+        >
+          <img
+            src="assets/images/spacex_starship.jpg"
+            style="
+              width: 100%;
+              height: 140px;
+              object-fit: cover;
+              border-radius: 12px;
+              cursor: pointer;
+            "
+            onclick="selectGif('assets/images/spacex_starship.jpg')"
+          />
+          <img
+            src="assets/images/tesla_optimus.jpg"
+            style="
+              width: 100%;
+              height: 140px;
+              object-fit: cover;
+              border-radius: 12px;
+              cursor: pointer;
+            "
+            onclick="selectGif('assets/images/tesla_optimus.jpg')"
+          />
+          <img
+            src="assets/images/cybertruck.jpg"
+            style="
+              width: 100%;
+              height: 140px;
+              object-fit: cover;
+              border-radius: 12px;
+              cursor: pointer;
+            "
+            onclick="selectGif('assets/images/cybertruck.jpg')"
+          />
+          <img
+            src="assets/images/grok_ai.jpg"
+            style="
+              width: 100%;
+              height: 140px;
+              object-fit: cover;
+              border-radius: 12px;
+              cursor: pointer;
+            "
+            onclick="selectGif('assets/images/grok_ai.jpg')"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Schedule Post Modal -->
+    <div
+      id="scheduleModal"
+      class="modal-overlay"
+      style="display: none"
+      onclick="if (event.target === this) closeScheduleModal();"
+    >
+      <div class="modal-box" style="max-width: 500px">
+        <div class="modal-header">
+          <button
+            class="btn-close-modal"
+            onclick="closeScheduleModal()"
+            data-icon="close"
+          ></button>
+          <span class="modal-title">Schedule Post</span>
+          <div style="width: 34px"></div>
+        </div>
+        <div
+          class="modal-body"
+          style="display: flex; flex-direction: column; gap: 16px"
+        >
+          <p style="color: var(--text-secondary); font-size: 14px">
+            Select when you would like this post to go live:
+          </p>
+          <input
+            type="datetime-local"
+            class="search-input"
+            style="
+              background: var(--bg-secondary);
+              border: 1px solid var(--border-color);
+              border-radius: 8px;
+              padding: 12px;
+              color: var(--text-primary);
+            "
+          />
+          <button
+            class="btn-submit-post"
+            onclick="confirmSchedule()"
+            style="padding: 12px"
+          >
+            Confirm Schedule
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile Options Popup Menu -->
+    <div
+      id="profileOptionsMenu"
+      style="
+        display: none;
+        position: fixed;
+        background: var(--bg-primary);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(255, 255, 255, 0.1);
+        padding: 8px;
+        z-index: 250;
+        min-width: 220px;
+      "
+    >
+      <div
+        class="search-result-item"
+        onclick="shareProfile()"
+        style="
+          border-radius: 8px;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+        "
+      >
+        Share @elonmusk profile
+      </div>
+      <div
+        class="search-result-item"
+        onclick="copyProfileLink()"
+        style="
+          border-radius: 8px;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+        "
+      >
+        Copy link to profile
+      </div>
+      <div
+        class="search-result-item"
+        onclick="toggleMuteProfile()"
+        style="
+          border-radius: 8px;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          color: var(--text-secondary);
+        "
+      >
+        Mute @elonmusk
+      </div>
+      <div
+        class="search-result-item"
+        onclick="toggleBlockProfile()"
+        style="
+          border-radius: 8px;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          color: var(--text-secondary);
+        "
+      >
+        Block @elonmusk
+      </div>
+      <div
+        class="search-result-item"
+        onclick="embedProfile()"
+        style="
+          border-radius: 8px;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+        "
+      >
+        Embed Profile
+      </div>
+    </div>
+
+    <!-- Standalone Tweet Composer Modal -->
+    <div
+      id="composerModal"
+      class="modal-overlay"
+      style="display: none"
+      onclick="if (event.target === this) closeComposerModal();"
+    >
+      <div class="modal-box" style="max-width: 580px">
+        <div class="modal-header">
+          <button
+            class="btn-close-modal"
+            onclick="closeComposerModal()"
+            data-icon="close"
+          ></button>
+          <span class="modal-title">New Post</span>
+          <div style="width: 34px"></div>
+        </div>
+        <div class="modal-body" style="padding: 16px">
+          <div style="display: flex; gap: 12px">
+            <img
+              src="assets/images/spacex_avatar.jpg"
+              style="
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+              "
+              onerror="this.src = 'assets/images/elon_avatar.svg'"
+            />
+            <div style="flex: 1">
+              <textarea
+                id="modalComposerText"
+                class="composer-textarea"
+                style="min-height: 100px; width: 100%"
+                placeholder="What is happening?!"
+              ></textarea>
+              <div
+                id="modalComposerPreview"
+                style="
+                  display: none;
+                  margin: 10px 0;
+                  border-radius: 12px;
+                  overflow: hidden;
+                  position: relative;
+                "
+              >
+                <img
+                  id="modalComposerImg"
+                  src=""
+                  style="width: 100%; max-height: 260px; object-fit: cover"
+                />
+                <button
+                  type="button"
+                  onclick="clearModalComposerMedia()"
+                  style="
+                    position: absolute;
+                    top: 8px;
+                    right: 8px;
+                    background: rgba(0, 0, 0, 0.75);
+                    color: #fff;
+                    border: none;
+                    border-radius: 50%;
+                    width: 28px;
+                    height: 28px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    font-weight: bold;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                  title="Remove media"
+                >
+                  ✕
+                </button>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-top: 12px;
+                  border-top: 1px solid var(--border-color);
+                  padding-top: 12px;
+                "
+              >
+                <div
+                  class="composer-tools"
+                  style="display: flex; gap: 8px; align-items: center"
+                >
+                  <input
+                    type="file"
+                    id="modalComposerFileInput"
+                    accept="image/*,video/*"
+                    style="display: none"
+                    onchange="handleModalComposerUpload(this)"
+                  />
+                  <button
+                    type="button"
+                    class="tool-btn"
+                    onclick="
+                      document.getElementById('modalComposerFileInput').click()
+                    "
+                    title="Add Photos or Video"
+                    data-icon="media"
+                  ></button>
+                  <button
+                    class="tool-btn"
+                    onclick="openGifModal()"
+                    title="GIF"
+                    data-icon="gif"
+                  ></button>
+                  <button
+                    class="tool-btn"
+                    onclick="openScheduleModal()"
+                    title="Schedule"
+                    data-icon="schedule"
+                  ></button>
+                  <span
+                    id="modalComposerUploadStatus"
+                    style="
+                      font-size: 12px;
+                      color: var(--twitter-blue);
+                      margin-left: 4px;
+                    "
+                  ></span>
+                </div>
+                <button class="btn-submit-post" onclick="submitModalPost()">
+                  Post
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fullscreen Lightbox -->
+    <div
+      id="lightboxModal"
+      class="lightbox-overlay"
+      style="display: none"
+      onclick="closeLightbox()"
+    >
+      <button
+        class="btn-close-lightbox"
+        onclick="closeLightbox()"
+        data-icon="close"
+      ></button>
+      <img
+        id="lightboxImg"
+        src=""
+        alt="Fullscreen view"
+        class="lightbox-img"
+        style="max-width: 90vw; max-height: 90vh; object-fit: contain"
+        onclick="event.stopPropagation()"
+      />
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Real-Time Floating Message Notification Container -->
+    <div id="msgNotificationContainer" class="msg-notification-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/config.js"></script>
+    
+    <!-- JavaScript Files with Cache Busters -->
+    <script src="assets/js/icons.js?v=1788871699"></script>
+    <script src="assets/js/app.js?v=1788871699"></script>
+  </body>
+</html>
